@@ -1,9 +1,11 @@
 ﻿using AlunosApi.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlunosApi.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     
@@ -19,20 +21,20 @@ namespace AlunosApi.Context
                     Email = "maria@yahoo.com",
                     Idade = 24
                 },
-                new Aluno 
-                { 
+                new Aluno
+                {
                     Id = 2,
                     Nome = "Fernanda",
                     Email = "fe@yahoo.com",
                     Idade = 20
                 },
                 new
-                  {
-                      Id = 3,
-                      Email = "camis@yahoo.com",
-                      Idade = 24,
-                      Nome = "Camila"
-                  },
+                {
+                    Id = 3,
+                    Email = "camis@yahoo.com",
+                    Idade = 24,
+                    Nome = "Camila"
+                },
                         new
                         {
                             Id = 4,
@@ -40,7 +42,7 @@ namespace AlunosApi.Context
                             Idade = 20,
                             Nome = "Iara"
                         }
-        
+
             );
             base.OnModelCreating(modelBuilder);
         }
